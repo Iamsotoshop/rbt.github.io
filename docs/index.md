@@ -1,37 +1,42 @@
-## Welcome to GitHub Pages
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>BACKUP</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">    
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script>const addButtons = settings => {
+  $('#dt1 tr td:nth-child(1)').html(function() {
+    return `<button type="button" title="google search" class="py-0 btn btn-secondary btn-sm search">${this.innerText}</button>`
+  })
+  $('#dt1 tr td:nth-child(2)').html(function() {
+    return `<button type="button" title="google trends" class="py-0 btn btn-secondary btn-sm search">${this.innerText}</button>`
+  })
+    $('#dt1 tr td:nth-child(3)').html(function() {
+    return `<button type="button" title="RB Check" class="py-0 btn btn-secondary btn-sm search">${this.innerText}</button>`
+  })
+};
 
-You can use the [editor on GitHub](https://github.com/Iamsotoshop/rbt.github.io/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+$(document).ready(function() {
+	//Create links for all keywords to Google Search result
+  $('tbody td:nth-child(1)').on("click", ".search", function() {
+    window.open(`https://google.com/search?q=${this.innerText}`, '_blank');
+  })
+  //Create links for all trend keywords to Google Trend 
+  $('tbody td:nth-child(2)').click(function() {
+    window.open(`https://trends.google.com/trends/explore?date=now 7-d&geo=US&q=${this.innerText}`, '_blank');
+  })
+  $('tbody td:nth-child(3)').click(function() {
+    window.open(`https://www.redbubble.com/shop/?query=${this.innerText}`, '_blank');
+  })
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+	//Create a Datatable with sorting, search and pagination opties
+  $table = $('table').DataTable({
+    "drawCallback": addButtons
+  })
+});
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Iamsotoshop/rbt.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+</script>
